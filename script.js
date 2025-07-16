@@ -1,10 +1,8 @@
 function showTab(tabId) {
-  // Hide all tab contents
+  // Hide all tab contents by removing 'active' class
   var tabContents = document.querySelectorAll('.tab-content');
   tabContents.forEach(function(content) {
-    // Remove active class and hide element
     content.classList.remove('active');
-    content.style.display = 'none';
   });
 
   // Deactivate all tab buttons
@@ -13,12 +11,10 @@ function showTab(tabId) {
     btn.classList.remove('active');
   });
 
-  // Show the selected tab content properly
+  // Show the selected tab content by adding 'active' class
   var selectedTab = document.getElementById(tabId);
   if (selectedTab) {
-    selectedTab.style.display = 'block'; // show first
-    void selectedTab.offsetWidth;        // force reflow for clean animation
-    selectedTab.classList.add('active'); // then animate
+    selectedTab.classList.add('active');
   }
 
   // Activate the clicked button
@@ -27,6 +23,7 @@ function showTab(tabId) {
     button.classList.add('active');
   }
 }
+
 
 
 // Set initial active tab on page load

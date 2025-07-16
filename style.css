@@ -122,17 +122,6 @@ canvas {
   transition: color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease; /* Added transitions for new properties */
 }
 
-.frost-navbar .nav-links a:focus,
-.frost-navbar .nav-links a:focus-visible,
-.frost-navbar .nav-links a:active {
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  border: none !important;
-  text-shadow: none !important;
-}
-
-
 .frost-navbar .nav-links a::after {
   content: "";
   position: absolute;
@@ -155,14 +144,14 @@ canvas {
 }
 .frost-navbar .nav-links a:focus,
 .frost-navbar .nav-links a.active {
+  background: none;
   outline: none;
-  background: transparent;
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); /* same glow as hover */
-  color: var(--accent-color);
-  text-shadow: 0 0 8px var(--accent-color);
-  padding: 5px 10px; /* ensure same padding in all states */
-  transition: all 0.3s ease;
+  box-shadow: none;
+  text-shadow: 0 0 8px var(--accent-color); /* optional soft glow */
+  transition: text-shadow 0.3s ease;
 }
+
+
 /* --- END NEW CONSOLIDATED NAVBAR STYLES --- */
 
 
@@ -422,15 +411,15 @@ footer {
   width: 100%;
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
   visibility: hidden; /* hides visually and prevents interaction */
-  will-change: opacity, transform;
 }
 
 .tab-content.active {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  position: relative;
   z-index: 1;
-  visibility: visible;
+  visibility: visible; /* now it's visible */
 }
 
 
@@ -568,12 +557,6 @@ footer {
         transform: scaleX(1);
     }
 }
-@keyframes frostSoftPulse {
-  0% { opacity: 0.4; transform: scale(0.98); }
-  50% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0.95; transform: scale(1.01); }
-}
-
 
 /* Additional utility classes used in HTML */
 .tab-buttons-container {
