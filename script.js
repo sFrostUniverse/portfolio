@@ -2,7 +2,9 @@ function showTab(tabId) {
   // Hide all tab contents
   var tabContents = document.querySelectorAll('.tab-content');
   tabContents.forEach(function(content) {
+    // Remove active class and hide element
     content.classList.remove('active');
+    content.style.display = 'none';
   });
 
   // Deactivate all tab buttons
@@ -11,18 +13,23 @@ function showTab(tabId) {
     btn.classList.remove('active');
   });
 
-  // Show the selected tab content
-  document.getElementById(tabId).classList.add('active');
+  // Show the selected tab content properly
+  var selectedTab = document.getElementById(tabId);
+  if (selectedTab) {
+    selectedTab.style.display = 'block'; // show first
+    void selectedTab.offsetWidth;        // force reflow for clean animation
+    selectedTab.classList.add('active'); // then animate
+  }
 
   // Activate the clicked button
-  // Find the button that corresponds to the tabId and add 'active' class
-  document.querySelector(`.tab-btn[onclick="showTab('${tabId}')"]`).classList.add('active');
+  var button = document.querySelector(`.tab-btn[onclick="showTab('${tabId}')"]`);
+  if (button) {
+    button.classList.add('active');
+  }
 }
 
+
 // Set initial active tab on page load
-document.addEventListener('DOMContentLoaded', function() {
-  showTab('bots'); // 'bots' is the ID of your first tab
-});
 
 
 function scrollToSection(id) {
@@ -42,8 +49,12 @@ function scrollToSection(id) {
 // Mobile navigation toggle
 function toggleMobileNav() {
   const mobileNav = document.getElementById('mobileNav');
-  mobileNav.classList.toggle('active');
+  const isActive = mobileNav.classList.toggle('active');
+
+  // Optional: disable scroll when nav is open
+  document.body.classList.toggle('mobile-nav-open', isActive);
 }
+
 
 
 // ❄️ Animated Snowfall Effect
@@ -106,11 +117,25 @@ window.addEventListener('resize', () => {
   initSnowflakes(100); // Re-initialize snowflakes on resize
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
+  // Set initial active tab
+  showTab('bots');
+
+  // Initialize snow animation
   resizeCanvas();
-  initSnowflakes(100); // Start with 100 snowflakes
-  drawSnowflakes(); // Start the animation
+  initSnowflakes(100);
+  drawSnowflakes();
+
+  // Close mobile nav when a link is clicked
+  const navLinks = document.querySelectorAll('.mobile-nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('mobileNav').classList.remove('active');
+      document.body.classList.remove('mobile-nav-open');
+    });
+  });
 });
+
 
 document.querySelectorAll(".card").forEach(card => {
   const video = card.querySelector(".preview-video");

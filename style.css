@@ -57,7 +57,7 @@ canvas {
     top: 0;
     left: 0;
     width: 100vw; /* Covers full viewport width */
-    height: 100vh; /* Covers full viewport height (can override JS for layout) */
+    height: 100dvh; /* Covers full viewport height (can override JS for layout) */
     z-index: -1; /* Make sure it's behind all other content */
     pointer-events: none; /* VERY IMPORTANT: Allows you to click/interact with elements *behind* the canvas */
     background-color: transparent; /* Ensures it's transparent if no snowfall is active */
@@ -117,10 +117,21 @@ canvas {
   text-decoration: none;
   font-weight: 400;
   font-size: 1.1em;
-  padding: 5px 0;
+  padding: 5px 10px;
   position: relative;
   transition: color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease; /* Added transitions for new properties */
 }
+
+.frost-navbar .nav-links a:focus,
+.frost-navbar .nav-links a:focus-visible,
+.frost-navbar .nav-links a:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border: none !important;
+  text-shadow: none !important;
+}
+
 
 .frost-navbar .nav-links a::after {
   content: "";
@@ -141,6 +152,16 @@ canvas {
 
 .frost-navbar .nav-links a:hover::after {
   width: 100%; /* Underline expands on hover */
+}
+.frost-navbar .nav-links a:focus,
+.frost-navbar .nav-links a.active {
+  outline: none;
+  background: transparent;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); /* same glow as hover */
+  color: var(--accent-color);
+  text-shadow: 0 0 8px var(--accent-color);
+  padding: 5px 10px; /* ensure same padding in all states */
+  transition: all 0.3s ease;
 }
 /* --- END NEW CONSOLIDATED NAVBAR STYLES --- */
 
@@ -385,12 +406,35 @@ footer {
 }
 
 /* Tab Content */
+.tab-container {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+}
+
 .tab-content {
-    display: none;
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  visibility: hidden; /* hides visually and prevents interaction */
+  will-change: opacity, transform;
 }
+
 .tab-content.active {
-    display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  z-index: 1;
+  visibility: visible;
 }
+
+
+
 
 /* Frosty Button Style - Consolidated */
 .frosty-btn {
@@ -524,6 +568,12 @@ footer {
         transform: scaleX(1);
     }
 }
+@keyframes frostSoftPulse {
+  0% { opacity: 0.4; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.95; transform: scale(1.01); }
+}
+
 
 /* Additional utility classes used in HTML */
 .tab-buttons-container {
@@ -556,4 +606,14 @@ footer {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     height: auto;
     display: block;
+}
+html {
+  scroll-behavior: smooth;
+}
+@media (max-width: 768px) {
+  body {
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
 }
