@@ -1,0 +1,559 @@
+/* style.css */
+
+/* Root Variables - Define your theme colors and font here */
+:root {
+    --primary: #00bcd4; /* A vibrant blue/cyan */
+    --secondary: #e0f7fa; /* A light, frosty blue */
+    --background: #f4fcff; /* Very light, almost white background */
+    --text-color: #dddddd; /* Bright gray for general text */
+    --font-family: 'Poppins', sans-serif;
+    --frost-card-bg: rgba(255, 255, 255, 0.08);
+    --frost-card-border: rgba(255, 255, 255, 0.25);
+    --frost-card-shadow-light: rgba(0, 188, 212, 0.1);
+    --frost-card-shadow-inset: rgba(173, 216, 230, 0.3);
+    --frosty-btn-shadow-light: rgba(173, 216, 230, 0.4);
+    --accent-color: #00e5ff; /* NEW: A bright cyan for accents in the new navbar */
+}
+
+/* Universal Box-Sizing and Smooth Scroll */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%; /* Ensures html element takes full viewport height */
+    overflow-x: hidden; /* Prevents horizontal scroll on html too */
+}
+
+/* Base Body Styles - Consolidated all 'body' rules here */
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    /* Adjust gradient opacity or remove it if you want the banner clearer */
+    background:
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(240, 255, 255, 0.1)),
+        url('assets/banner.png') no-repeat center center fixed;
+    background-size: cover;
+    background-blend-mode: overlay; /* Keep or remove based on desired effect */
+    color: var(--text-color); /* Use the defined --text-color variable */
+    line-height: 1.6;
+    overflow-x: hidden; /* To prevent horizontal scrollbar on body */
+    position: relative;
+    /* min-height: 100vh; -- Removed to prevent excess space if content is short */
+    height: 100%; /* Ensures body takes full html height */
+}
+
+/* Ensure all text elements inherit the text color or use it explicitly */
+body, h1, h2, h3, h4, h5, h6, p, li, span, strong {
+    color: var(--text-color) !important; /* Use !important to override default browser styles */
+}
+
+/* Canvas styling - CRITICAL for its background behavior and preventing scroll issues */
+canvas {
+    display: block; /* Ensures canvas behaves as a block element */
+    position: fixed; /* Keeps it fixed in the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Covers full viewport width */
+    height: 100vh; /* Covers full viewport height (can override JS for layout) */
+    z-index: -1; /* Make sure it's behind all other content */
+    pointer-events: none; /* VERY IMPORTANT: Allows you to click/interact with elements *behind* the canvas */
+    background-color: transparent; /* Ensures it's transparent if no snowfall is active */
+}
+
+/* --- NEW CONSOLIDATED NAVBAR STYLES --- */
+/* Navbar */
+.frost-navbar {
+  background: rgba(26, 42, 58, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 15px 20px;
+  position: fixed; /* Changed from sticky to fixed as per your new design */
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+}
+
+.frost-navbar .nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.frost-navbar .logo {
+  margin: 0;
+  font-size: 1.8em;
+  color: var(--accent-color); /* Using the new accent color */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.frost-navbar .logo img {
+  height: 40px; /* Adjust as needed */
+  width: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(164, 211, 255, 0.5);
+}
+
+.frost-navbar .nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px;
+}
+
+.frost-navbar .nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.1em;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease; /* Added transitions for new properties */
+}
+
+.frost-navbar .nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color); /* Underline uses accent color */
+  transition: width 0.3s ease;
+}
+
+.frost-navbar .nav-links a:hover {
+  color: var(--accent-color); /* Text color changes to accent color on hover */
+  text-shadow: 0 0 8px var(--accent-color); /* Subtle text glow */
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); /* Subtle box glow using accent color */
+}
+
+.frost-navbar .nav-links a:hover::after {
+  width: 100%; /* Underline expands on hover */
+}
+/* --- END NEW CONSOLIDATED NAVBAR STYLES --- */
+
+
+/* Header (if you decide to use it, it's currently not in your index.html) */
+header {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(to right, #00bcd4, #4fc3f7);
+    color: white;
+    z-index: 1;
+    position: relative;
+}
+
+header img {
+    width: 120px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Desktop styling for header */
+@media (min-width: 769px) {
+    header h1 {
+        font-size: 3rem;
+    }
+    header p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+}
+
+/* Mobile styling for header */
+@media (max-width: 768px) {
+    header {
+        padding: 140px 20px 100px;
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    header img {
+        width: 100px;
+        margin-bottom: 16px;
+    }
+    header h1 {
+        font-size: 2.2rem;
+        line-height: 1.3;
+        margin-bottom: 10px;
+    }
+    header p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+}
+
+
+/* General Section Styling */
+section {
+    scroll-margin-top: 80px; /* Offset for sticky nav when linking to sections */
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Specific styling for the #about section */
+#about {
+    padding: 80px 20px 40px;
+    margin-top: 500px; /* This creates the large initial space you desire */
+}
+
+/* Paragraph spacing in #about (moved from inline) */
+#about p {
+    margin-bottom: 24px;
+}
+#about p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Headings */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+/* Card Styles - Consolidated all '.card' rules here */
+.card {
+    background: var(--frost-card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 0 25px var(--frost-card-shadow-light),
+        inset 0 0 20px var(--frost-card-shadow-inset);
+    border: 1px solid var(--frost-card-border);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-color);
+}
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('https://www.transparenttextures.com/patterns/ice.png');
+    opacity: 0.08;
+    z-index: 0;
+}
+.card:hover {
+    transform: scale(1.02);
+    box-shadow:
+        0 0 35px rgba(0, 188, 212, 0.2), /* Slightly stronger on hover */
+        inset 0 0 30px rgba(173, 216, 230, 0.4); /* Slightly stronger on hover */
+}
+.card > * {
+    position: relative;
+    z-index: 1; /* Ensures content is above the texture */
+}
+
+/* Specific styling for #services cards (if different from general .card) */
+#services .card {
+    background: rgba(255, 255, 255, 0.2); /* Slightly more opaque background */
+    padding: 40px; /* Slightly more padding */
+    box-shadow: 0 0 30px rgba(0, 188, 212, 0.1); /* Different shadow */
+}
+#services .card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 0 35px rgba(0, 188, 212, 0.2);
+}
+
+/* Mobile Toggle Button (Hamburger) */
+.mobile-toggle {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Mobile Nav Floating Menu */
+.mobile-nav {
+    position: fixed;
+    top: -100%; /* Off-screen by default */
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+    gap: 20px;
+    transition: top 0.4s ease;
+    z-index: 1000;
+}
+.mobile-nav a {
+    color: #003344;
+    background: linear-gradient(to bottom, #d0f0ff, #a0d8ef);
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(173,216,230,0.4);
+    transition: background 0.3s ease;
+}
+.mobile-nav a:hover {
+    background: linear-gradient(to bottom, #ffffff, #c1f2ff);
+}
+/* When visible */
+.mobile-nav.active { /* Changed from .show to .active for consistency with JS */
+    top: 60px; /* Adjust based on navbar height */
+}
+
+/* Responsive rule to hide desktop nav and show mobile toggle */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .mobile-toggle {
+        display: block;
+    }
+}
+
+/* General Button Styles (btn is more generic, frosty-btn is specific) */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    margin-top: 10px;
+}
+.btn:hover {
+    background: var(--text-color); /* Use text-color variable for hover */
+    color: var(--secondary);
+}
+
+/* Main Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    z-index: 999;
+    position: relative;
+    margin-top: 50px; /* Added margin for spacing from content above */
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Tab Buttons */
+.tab-btn {
+    padding: 10px 20px;
+    border: none;
+    background: var(--secondary);
+    color: var(--text-color);
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.tab-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
+
+/* Frosty Button Style - Consolidated */
+.frosty-btn {
+    position: relative;
+    padding: 10px 20px;
+    background: linear-gradient(to bottom, #d0f0ff, #a0d8ef);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    color: #003344;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.frosty-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 70%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.frosty-btn:hover {
+    background: linear-gradient(to bottom, #ffffff, #c1f2ff);
+    transform: scale(1.05);
+    box-shadow: inset 0 0 8px rgba(255,255,255,0.3), 0 0 14px rgba(173, 216, 230, 0.5);
+}
+
+.frosty-btn:active {
+    animation: crackGlow 0.4s ease; /* Using crackGlow for all frosty-btn active states */
+}
+
+/* Services List (moved from inline) */
+#services ul li {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+/* Frost Footer Section */
+#frost-footer {
+    position: relative;
+    z-index: 1;
+    padding: 60px 20px;
+    margin-top: 80px; /* Spacing from section above */
+}
+
+/* Frost Footer Card (moved from inline) */
+.frost-footer-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    padding: 40px;
+    text-align: center;
+    color: white; /* Ensure text is visible on the frosty background */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    max-width: 800px;
+    margin: auto; /* Center the card */
+}
+
+/* Frost Footer Headings/Paragraphs (moved from inline) */
+#frost-footer h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+#frost-footer p {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Social Links Container (moved from inline) */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+.social-links a {
+    text-decoration: none;
+    display: inline-block; /* Make sure links behave as blocks for consistent sizing */
+}
+.social-links img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Skills Grid (moved from inline) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+.skills-grid img {
+    width: 50px;
+    height: 50px;
+}
+
+
+/* Animations */
+@keyframes crackIce {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.95); opacity: 0.8; }
+    100% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes crackGlow {
+    0% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.3); }
+    50% { transform: scale(0.96); box-shadow: 0 0 25px rgba(255,255,255,0.6); }
+    100% { transform: scale(1.02); box-shadow: 0 0 14px rgba(0, 188, 212, 0.5); }
+}
+
+@keyframes frostPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes frostGlassPulse {
+    0%, 100% {
+        opacity: 0;
+        transform: scaleX(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+/* Additional utility classes used in HTML */
+.tab-buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    /* Remove or change 'justify-content: center;' */
+    /* justify-content: flex-start; /* Optional: explicitly set to start */
+    flex-wrap: wrap;
+}
+
+.flex-wrap-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+}
+
+.card-content-left {
+    flex: 2 1 300px;
+}
+
+.card-image-right {
+    flex: 1 1 300px;
+}
+
+.card img, .card video {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    height: auto;
+    display: block;
+}

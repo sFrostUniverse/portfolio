@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="assets/frost-logo.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frost | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="frost-navbar">
+    <div class="nav-content">
+      <h1 class="logo">sFrost Universe</h1>
+
+      <button class="mobile-toggle" onclick="toggleMobileNav()">☰</button>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="toggleMobileNav()">About</a>
+  <a href="#projects" onclick="toggleMobileNav()">Projects</a>
+  <a href="#services" onclick="toggleMobileNav()">Services</a>
+  <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+</div>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>
+      Hey! I'm <strong>Frost</strong> — a passionate builder and editor who blends smart tech with creative visuals. I’ve built bots like <strong>Vikrant</strong> to protect Discord servers from nuking attacks, and launched <strong>FrostNews 24/7</strong> to bring real-time Indian headlines directly to Discord communities.
+    </p>
+
+    <p>
+      I also work in visual storytelling — crafting rhythmic edits and indie short films that speak through sound and motion. From looping sequences to atmospheric short films, I use tools like Adobe After Effects and Premiere Pro to create stories that move with feeling and flow.
+    </p>
+
+    <p>
+      Now, I'm focused on helping <strong>Twitch streamers and creators</strong> with bot protection, automation, and edit support. Whether it's custom security bots coded in Python, or stream-ready video loops and overlays, I bring a frosty touch of professionalism and passion to every frame.
+    </p>
+  </div>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="tab-buttons-container">
+<button class="tab-btn frosty-btn active" onclick="showTab('bots')">🤖 Bots</button>
+<button class="tab-btn frosty-btn" onclick="showTab('edits')">🎞️ Edits</button>
+<button class="tab-btn frosty-btn" onclick="showTab('films')">🎬 Films</button>
+</div>
+
+
+<div id="bots" class="tab-content active">
+
+    <div class="card flex-wrap-card">
+        <div class="card-content-left">
+            <h3>🔐 Vikrant — Anti-Nuke Security Bot</h3>
+            <p>Vikrant is a smart, defensive bot that protects Discord servers from major threats like nukes, mass bans, and channel wipes. Built in Python with a full real-time anti-nuke system, it features trusted admin setup, anonymous complaint logging, and customizable punishments. Designed to serve communities that prioritize safety and professionalism, Vikrant is ideal for server owners who want proactive defense without compromise.</p>
+            <a href="https://discord.com/oauth2/authorize?client_id=1390545148139802735&permissions=8&scope=bot%20applications.commands" target="_blank" class="btn frosty-btn">➕ Invite Vikrant</a>
+        </div>
+        <div class="card-image-right">
+            <img src="assets/Vikrant.png" alt="Vikrant Bot">
+        </div>
+    </div>
+
+    <div class="card flex-wrap-card">
+        <div class="card-content-left">
+            <h3>🧊 FrostNews 24/7 — Cold, Reliable Indian Headlines</h3>
+            <p>FrostNews 24/7 is a live-streaming Discord bot that fetches the latest Indian news headlines every 15 minutes using real-time scraping (no NewsAPI). Each update includes image thumbnails, links to sources, and a frosty news delivery aesthetic. Ideal for streamers, info channels, and news-focused communities, this bot is built to feel clean, cold, and sharp—just like ice.</p>
+            <a href="https://discord.com/oauth2/authorize?client_id=1393420826992443503&permissions=8&scope=bot%20applications.commands" target="_blank" class="btn frosty-btn">➕ Invite FrostNews</a>
+        </div>
+        <div class="card-image-right">
+            <img src="assets/news.png" alt="FrostNews 24/7">
+        </div>
+    </div>
+
+</div>
+
+
+
+  <div id="edits" class="tab-content">
+    <div class="card flex-wrap-card">
+      <div class="card-content-left">
+        <h3>🎞️ Loops</h3>
+        <p>Short, rhythmic video loops designed for seamless repetition — created using Adobe Premiere Pro and After Effects. Built for motion sync, aesthetics, and a crisp visual punch that repeats with satisfying flow.</p>
+        <p><strong>Style:</strong> Visual Rhythm, Frame-perfect Sync, Repeats Smoothly</p>
+        <a href="https://www.instagram.com/s.frostuniverse/reel/DGXverOA1Fw/" target="_blank" class="btn frosty-btn">▶️ Watch on Instagram</a>
+      </div>
+      <div class="card-image-right">
+        <video class="preview-video" muted playsinline>
+          <source src="assets/Video-72.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <div class="card flex-wrap-card">
+      <div class="card-content-left">
+        <h3>🎵 Music Edits</h3>
+        <p>This edit brings together music, emotion, and motion to create a deep, immersive experience. Built around the track “Aadatein” by Hades, the video blends cinematic sequences, visual metaphors, and rhythmic transitions to evoke both nostalgia and raw feeling. Every cut is timed with lyrics and beats, emphasizing the storytelling within the song itself. Designed using a combination of slow-motion overlays, smooth velocity ramps, and hand-synced color tones — this edit reflects my passion for visual poetry in motion.</p>
+        <p><strong>Style:</strong> Cinematic Sync, Lyric-Driven Narrative, Deep Mood Tones</p>
+        <a href="https://www.instagram.com/itshadesmusic/reel/DEu2M0pTLQC/" target="_blank" class="btn frosty-btn">🎵 Watch on Instagram</a>
+      </div>
+      <div class="card-image-right">
+        <video class="preview-video" muted playsinline>
+          <source src="assets/aadatein-edit.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <div class="card flex-wrap-card">
+      <div class="card-content-left">
+        <h3>🎮 Game Edits</h3>
+        <p>Fast-paced and cinematic CSGO edit synced to slowed-down sound. Made on Indian gaming content, this edit highlights epic flicks and smooth transitions for a dramatic aesthetic. The pacing, transitions, and depth effects are tailored to enhance each highlight moment, capturing the spirit of competitive gameplay.</p>
+        <a href="https://youtu.be/ge9LohBSnMw" target="_blank" class="btn frosty-btn">🎮 Watch on YouTube</a>
+      </div>
+      <div class="card-image-right">
+        <video class="preview-video" muted playsinline>
+          <source src="assets/devil-eyes-edit.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+
+    <div id="films" class="tab-content">
+        <div class="card flex-wrap-card">
+            <div class="card-content-left">
+                <h2>"INK !" a 2 min short horror film.</h2>
+                <p>A chilling 2-minute short horror film. This piece explores themes of the unknown and suspense, designed to leave a lasting impression.</p>
+                <a href="https://www.instagram.com/s.frostuniverse/reel/C6wNEsdyaG9/" target="_blank" class="btn frosty-btn">Watch on Instagram</a>
+            </div>
+            <div class="card-image-right">
+                <img src="assets/ink-thumbnail.jpg" alt="Thumbnail for INK! Short Film">
+            </div>
+        </div>
+
+        <div class="card flex-wrap-card">
+            <div class="card-content-left">
+                <h2>Contemplation: The Mind's Echo</h2>
+                <p>“Contemplation” is a cinematic exploration of the mind’s labyrinth. It’s a journey that begins in the tranquil realms of relaxation but can veer into the shadows of psychological distress. This film captures the essence of introspection, where the quest for inner peace can sometimes awaken inner demons.</p>
+                <a href="https://www.instagram.com/s.frostuniverse/reel/C9RwAc6Al66/" target="_blank" class="btn frosty-btn">Watch on Instagram</a>
+            </div>
+            <div class="card-image-right">
+                <img src="assets/contemplation-thumbnail.jpg" alt="Thumbnail for Contemplation Film">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="skills">
+  <h2>Editing & Development Tools</h2>
+  <div class="card">
+    <div class="skills-grid">
+      <div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="50">
+        <p>Python</p>
+      </div>
+      <div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg" alt="After Effects" width="50">
+        <p>After Effects</p>
+      </div>
+      <div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-original.svg" alt="Premiere Pro" width="50">
+        <p>Premiere Pro</p>
+      </div>
+      <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg" alt="Discord Bots" width="50">
+        <p>Discord Bots</p>
+      </div>
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Twitch Tools" width="50">
+        <p>Twitch Tools</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section id="services">
+  <h2>Services</h2>
+  <div class="card">
+    <ul class="service-list">
+      <li>🤖 Discord Bot Development (Security, Utility, Twitch, Logging)</li>
+      <li>🎬 Video Editing – Loops, Montages, Reels, Short Films</li>
+      <li>🛠️ Automation – Alerts, Twitch overlays, Channel management</li>
+      <li>🎨 Custom UI Themes for bots/web</li>
+      <li>🤝 One-on-one support for creators or servers</li>
+    </ul>
+  </div>
+</section>
+
+
+
+
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Reach out for commissions, collabs, or support 💙</p>
+      <p>📧 <strong>Email:</strong> <a href="mailto:frostyyuniverse@gmail.com">frostyyuniverse@gmail.com</a></p>
+      <p>💬 <strong>Discord Server:</strong> <a href="https://discord.com/invite/XcTFDd7ZTT" target="_blank">Join My Server</a></p>
+    </div>
+  </section>
+
+    <section id="frost-footer">
+    <div class="frost-footer-card">
+      <h2>I'm Frost ❄</h2>
+      <p>Follow me and stay connected:</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/s.frostuniverse/?__pwa=1#" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+        </a>
+        <a href="https://github.com/sFrostUniverse" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+        </a>
+        <a href="https://www.twitch.tv/sfrostuniverse" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733641.png" alt="Twitch">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Frost Universe. Open-source projects licensed under <a href="https://github.com/sFrostUniverse/Vikrant-bot/blob/main/LICENSE">MIT</a>.<br />
+    Built with ❄️ by Frost
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
