@@ -595,8 +595,12 @@ html {
 }
 @media (max-width: 768px) {
   body {
-    background-size: contain;
+    background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
+  }
+  /* ADD THIS RULE BELOW FOR THE #about SECTION */
+  #about {
+    margin-top: 100px; /* Adjust this value (e.g., 100px, 150px, or 20vh) as needed for mobile */
   }
 }
