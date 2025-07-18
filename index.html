@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,19 +15,20 @@
       <h1 class="logo">sFrost Universe</h1>
 
       <button class="mobile-toggle" onclick="toggleMobileNav()">☰</button>
+
       <ul class="nav-links">
-        <li><a href="javascript:void(0)" onclick="scrollToSection('about')">About</a></li>
-        <li><a href="javascript:void(0)" onclick="scrollToSection('projects')">Projects</a></li>
-        <li><a href="javascript:void(0)" onclick="scrollToSection('services')">Services</a></li>
-        <li><a href="javascript:void(0)" onclick="scrollToSection('contact')">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
   <div class="mobile-nav" id="mobileNav">
-  <a href="javascript:void(0)" onclick="scrollToSection('about'); toggleMobileNav()">About</a>
-  <a href="javascript:void(0)" onclick="scrollToSection('projects'); toggleMobileNav()">Projects</a>
-  <a href="javascript:void(0)" onclick="scrollToSection('services'); toggleMobileNav()">Services</a>
-  <a href="javascript:void(0)" onclick="scrollToSection('contact'); toggleMobileNav()">Contact</a>
+  <a href="#about" onclick="toggleMobileNav()">About</a>
+  <a href="#projects" onclick="toggleMobileNav()">Projects</a>
+  <a href="#services" onclick="toggleMobileNav()">Services</a>
+  <a href="#contact" onclick="toggleMobileNav()">Contact</a>
 </div>
 
 <section id="about">

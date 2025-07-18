@@ -291,15 +291,10 @@ h2 {
     display: none; /* Hidden by default on desktop */
     background: none;
     border: none;
-    font-size: 32px; /* Increased size */
-    color: var(--text-color); /* Use text color */
+    font-size: 28px;
+    color: white;
     cursor: pointer;
     z-index: 1001;
-    transition: color 0.3s ease; /* Smooth transition for color change */
-}
-
-.mobile-toggle:hover {
-    color: var(--primary); /* Change color on hover */
 }
 
 /* Mobile Nav Floating Menu */
@@ -584,23 +579,17 @@ footer {
     flex: 2 1 300px;
 }
 
+.card-image-right {
+    flex: 1 1 300px;
+}
+
 .card img, .card video {
-    /* Keep existing */
     width: 100%;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    height: auto; /* This will be overridden by the absolute positioning */
+    height: auto;
     display: block;
-
-    /* Add these for object-fit */
-    position: absolute; /* Position relative to .card-image-right */
-    top: 0;
-    left: 0;
-    height: 100%; /* Make it fill the height of the container */
-    object-fit: cover; /* This crops the image to fit the container */
-    object-position: center; /* Ensures cropping is centered */
 }
-
 html {
   scroll-behavior: smooth;
 }
@@ -614,11 +603,4 @@ html {
   #about {
     margin-top: 100px; /* Adjust this value (e.g., 100px, 150px, or 20vh) as needed for mobile */
   }
-}
-.card-image-right {
-    flex: 1 1 400px; /* Changed from 300px to 400px to make it less small */
-    position: relative;
-    padding-bottom: 56.25%; /* Changed from 75% for 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
 }
