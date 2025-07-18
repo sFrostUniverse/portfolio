@@ -291,10 +291,15 @@ h2 {
     display: none; /* Hidden by default on desktop */
     background: none;
     border: none;
-    font-size: 28px;
-    color: white;
+    font-size: 32px; /* Increased size */
+    color: var(--text-color); /* Use text color */
     cursor: pointer;
     z-index: 1001;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.mobile-toggle:hover {
+    color: var(--primary); /* Change color on hover */
 }
 
 /* Mobile Nav Floating Menu */
@@ -611,9 +616,9 @@ html {
   }
 }
 .card-image-right {
-    flex: 1 1 300px;
-    position: relative; /* Add this */
-    padding-bottom: 75%; /* Add this for 4:3 aspect ratio (3/4 = 0.75) */
-    height: 0; /* Add this to collapse its height as padding creates space */
-    overflow: hidden; /* Add this to ensure content doesn't spill if it grows */
+    flex: 1 1 400px; /* Changed from 300px to 400px to make it less small */
+    position: relative;
+    padding-bottom: 56.25%; /* Changed from 75% for 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
 }
