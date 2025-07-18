@@ -19,6 +19,10 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
+html, body {
+  min-height: 100vh;
+  height: auto;
+}
 
 html {
     scroll-behavior: smooth;
@@ -31,29 +35,37 @@ body {
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    /* Adjust gradient opacity or remove it if you want the banner clearer */
-    background:
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(240, 255, 255, 0.1)),
-        url('assets/banner.png') no-repeat center center fixed;
+    background-color: #eafaff; /* NEW: Fallback color */
+    background-image:
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.08), rgba(240, 255, 255, 0.12)),
+        url('assets/banner.png');
+    background-repeat: no-repeat;
+    background-position: center top;
     background-size: cover;
-    background-blend-mode: overlay; /* Keep or remove based on desired effect */
-    color: var(--text-color); /* Use the defined --text-color variable */
+    background-attachment: scroll; /* FIX: smoother on mobile than fixed */
+    background-blend-mode: overlay;
+    color: var(--text-color);
     line-height: 1.6;
-    overflow-x: hidden; /* To prevent horizontal scrollbar on body */
+    overflow-x: hidden;
     position: relative;
-    /* min-height: 100vh; -- Removed to prevent excess space if content is short */
-    height: 100%; /* Ensures body takes full html height */
+    height: 100%;
 }
+
 
 /* Optional: Disable scroll when mobile nav is open */
 body.mobile-nav-open {
-    overflow: hidden;
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
 }
+
 
 /* Ensure all text elements inherit the text color or use it explicitly */
 body, h1, h2, h3, h4, h5, h6, p, li, span, strong {
     color: var(--text-color) !important; /* Use !important to override default browser styles */
 }
+
 
 /* Canvas styling - CRITICAL for its background behavior and preventing scroll issues */
 canvas {
@@ -62,7 +74,7 @@ canvas {
     top: 0;
     left: 0;
     width: 100vw; /* Covers full viewport width */
-    height: 100dvh; /* Covers full viewport height (can override JS for layout) */
+    height: 100vh; /* Covers full viewport height (can override JS for layout) */
     z-index: -1; /* Make sure it's behind all other content */
     pointer-events: none; /* VERY IMPORTANT: Allows you to click/interact with elements *behind* the canvas */
     background-color: transparent; /* Ensures it's transparent if no snowfall is active */
@@ -325,7 +337,7 @@ h2 {
 }
 .mobile-nav a {
     color: #003344;
-    background: linear-gradient(to bottom, #d0f0ff, #a0d8ef);
+    background: linear-gradient(to bottom, #ffffff, #c9f3ff);
     padding: 10px 20px;
     border-radius: 12px;
     text-decoration: none;
@@ -413,6 +425,7 @@ footer {
   position: relative;
   min-height: 500px;
   overflow: hidden;
+  z-index: 0;
 }
 
 .tab-content {
@@ -435,6 +448,10 @@ footer {
   z-index: 1;
   visibility: visible; /* now it's visible */
 }
+.btn, .tab-btn, .frosty-btn {
+  touch-action: manipulation;
+}
+
 
 
 
@@ -630,5 +647,30 @@ html {
   /* ADD THIS RULE BELOW FOR THE #about SECTION */
   #about {
     margin-top: 100px; /* Adjust this value (e.g., 100px, 150px, or 20vh) as needed for mobile */
+  }
+}
+@media (max-width: 768px) {
+  .flex-wrap-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card-content-left,
+  .card-image-right {
+    flex: 1 1 100%;
+    padding-bottom: 0; /* Remove the aspect ratio padding on mobile */
+    height: auto;
+    position: relative;
+  }
+
+  .card img, .card video {
+    position: relative; /* Cancel absolute positioning on mobile */
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .tab-container {
+    min-height: 300px; /* Reduce excessive space on mobile */
   }
 }
