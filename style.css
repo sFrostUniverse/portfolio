@@ -31,6 +31,9 @@ body {
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
+    /* --- MODIFIED CODE FOR OVERLAP FIX (previously 80px) --- */
+    padding-top: 100px; /* Increased to ensure enough space for the fixed navbar */
+    /* --- END OF MODIFIED CODE FOR OVERLAP FIX --- */
     /* Adjust gradient opacity or remove it if you want the banner clearer */
     background:
         linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(240, 255, 255, 0.1)),
@@ -331,15 +334,22 @@ h2 {
     top: 60px; /* Adjust based on navbar height */
 }
 
-/* Responsive rule to hide desktop nav and show mobile toggle */
+/* --- START OF MODIFIED MEDIA QUERY FOR MOBILE NAV LINKS --- */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
+    .frost-navbar .nav-links {
+        display: none !important; /* Force hide desktop navigation on mobile */
     }
     .mobile-toggle {
-        display: block;
+        display: block !important; /* Ensure mobile toggle is visible */
+        margin-left: auto; /* Pushes it to the right within the flex container */
+    }
+
+    .frost-navbar .nav-content {
+        justify-content: space-between; /* Keep this to separate logo and toggle */
+        width: 100%;
     }
 }
+/* --- END OF MODIFIED MEDIA QUERY FOR MOBILE NAV LINKS --- */
 
 /* General Button Styles (btn is more generic, frosty-btn is specific) */
 .btn {
