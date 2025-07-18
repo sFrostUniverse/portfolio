@@ -154,6 +154,28 @@ canvas {
   text-shadow: 0 0 8px var(--accent-color); /* optional soft glow */
   transition: text-shadow 0.3s ease;
 }
+.hero-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: transparent; /* banner is in body bg */
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #e0f7fa;
+  margin-top: 10px;
+}
+
 
 
 /* --- END NEW CONSOLIDATED NAVBAR STYLES --- */
