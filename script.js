@@ -1,30 +1,41 @@
 function showTab(tabId) {
-  // Hide all tab contents
-  const tabContents = document.querySelectorAll('.tab-content');
-  tabContents.forEach(content => content.classList.remove('active'));
+  // Hide all tab contents by removing 'active' class
+  var tabContents = document.querySelectorAll('.tab-content');
+  tabContents.forEach(function(content) {
+    content.classList.remove('active');
+  });
 
   // Deactivate all tab buttons
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  tabButtons.forEach(btn => btn.classList.remove('active'));
+  var tabButtons = document.querySelectorAll('.tab-btn');
+  tabButtons.forEach(function(btn) {
+    btn.classList.remove('active');
+  });
 
-  // Activate selected tab content
-  const selectedTab = document.getElementById(tabId);
+  // Show the selected tab content by adding 'active' class
+  var selectedTab = document.getElementById(tabId);
   if (selectedTab) {
     selectedTab.classList.add('active');
   }
 
   // Activate the clicked button
-  const button = document.querySelector(`.tab-btn[onclick="showTab('${tabId}')"]`);
+  var button = document.querySelector(`.tab-btn[onclick="showTab('${tabId}')"]`);
   if (button) {
     button.classList.add('active');
   }
 }
 
+
+
+// Set initial active tab on page load
+
+
 function scrollToSection(id) {
   const element = document.getElementById(id);
   if (element) {
+    // Calculate the offset considering the fixed navbar height
     const navbarHeight = document.querySelector('.frost-navbar').offsetHeight;
     const offsetPosition = element.offsetTop - navbarHeight;
+
     window.scrollTo({
       top: offsetPosition,
       behavior: "smooth"
@@ -32,13 +43,18 @@ function scrollToSection(id) {
   }
 }
 
+// Mobile navigation toggle
 function toggleMobileNav() {
   const mobileNav = document.getElementById('mobileNav');
   const isActive = mobileNav.classList.toggle('active');
+
+  // Optional: disable scroll when nav is open
   document.body.classList.toggle('mobile-nav-open', isActive);
 }
 
-// ❄️ Snowfall Effect
+
+
+// ❄️ Animated Snowfall Effect
 const snowflakes = [];
 const canvas = document.createElement('canvas');
 const ctx = canvas.getContext('2d');
@@ -48,29 +64,31 @@ document.body.appendChild(canvas);
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  // FIX: Change canvas height to window.innerHeight (viewport height)
+  canvas.height = window.innerHeight; // Use window.innerHeight to cover only the visible screen
 }
 
 function createSnowflake() {
   return {
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    radius: Math.random() * 2 + 1,
-    speed: Math.random() * 1 + 0.5,
-    opacity: Math.random() * 0.5 + 0.5
+    radius: Math.random() * 2 + 1, // 1 to 3 pixels
+    speed: Math.random() * 1 + 0.5, // 0.5 to 1.5 pixels per frame
+    opacity: Math.random() * 0.5 + 0.5 // 0.5 to 1.0
   };
 }
 
 function initSnowflakes(count) {
-  snowflakes.length = 0;
+  snowflakes.length = 0; // Clear existing snowflakes
   for (let i = 0; i < count; i++) {
     snowflakes.push(createSnowflake());
   }
 }
 
 function drawSnowflakes() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'; // White snowflakes
 
   snowflakes.forEach(flake => {
     ctx.beginPath();
@@ -78,8 +96,10 @@ function drawSnowflakes() {
     ctx.globalAlpha = flake.opacity;
     ctx.fill();
 
+    // Update snowflake position
     flake.y += flake.speed;
     if (flake.y > canvas.height) {
+      // Reset snowflake to top if it goes off-screen
       flake.y = -flake.radius;
       flake.x = Math.random() * canvas.width;
     }
@@ -88,51 +108,41 @@ function drawSnowflakes() {
   animationFrameId = requestAnimationFrame(drawSnowflakes);
 }
 
-// ✅ All-in-One DOM Ready Block
-document.addEventListener("DOMContentLoaded", () => {
-  // Set correct tab based on URL hash
-  const hash = window.location.hash;
-  const sectionId = hash ? hash.substring(1) : null;
-  const validTabs = ['bots', 'edits', 'films'];
+// Initialize and start snowfall
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  initSnowflakes(100); // Re-initialize snowflakes on resize
+});
 
-  if (validTabs.includes(sectionId)) {
-    showTab(sectionId);
-  } else {
-    showTab('bots');
-  }
+document.addEventListener('DOMContentLoaded', function () {
+  // Set initial active tab
+  showTab('bots');
 
-  if (sectionId) {
-    setTimeout(() => scrollToSection(sectionId), 100);
-  }
-
-  // Init snow
+  // Initialize snow animation
   resizeCanvas();
   initSnowflakes(100);
   drawSnowflakes();
 
-  // Close mobile nav on link click
-  document.querySelectorAll('.mobile-nav a').forEach(link => {
+  // Close mobile nav when a link is clicked
+  const navLinks = document.querySelectorAll('.mobile-nav a');
+  navLinks.forEach(link => {
     link.addEventListener('click', () => {
       document.getElementById('mobileNav').classList.remove('active');
       document.body.classList.remove('mobile-nav-open');
     });
   });
-
-  // Video hover previews
-  document.querySelectorAll(".card").forEach(card => {
-    const video = card.querySelector(".preview-video");
-    if (video) {
-      card.addEventListener("mouseenter", () => video.play());
-      card.addEventListener("mouseleave", () => {
-        video.pause();
-        video.currentTime = 0;
-      });
-    }
-  });
 });
 
-// Recalculate snowflakes on window resize
-window.addEventListener('resize', () => {
-  resizeCanvas();
-  initSnowflakes(100);
+
+document.querySelectorAll(".card").forEach(card => {
+  const video = card.querySelector(".preview-video");
+  if (video) {
+    card.addEventListener("mouseenter", () => {
+      video.play();
+    });
+    card.addEventListener("mouseleave", () => {
+      video.pause();
+      video.currentTime = 0; // Rewind to start
+    });
+  }
 });
