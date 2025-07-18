@@ -146,21 +146,19 @@ document.querySelectorAll(".card").forEach(card => {
     });
   }
 });
-function scrollToSection(id) {
-  const section = document.getElementById(id);
-  if (section) {
-    section.scrollIntoView({ behavior: 'smooth' });
-  }
-}
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function(e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute("href"));
     if (target) {
+      const navbarHeight = document.querySelector('.frost-navbar').offsetHeight;
+      const offsetPosition = target.offsetTop - navbarHeight;
+
       window.scrollTo({
-        top: target.offsetTop - 100, // Adjust 100 based on navbar height
+        top: offsetPosition,
         behavior: "smooth"
       });
     }
   });
 });
+
