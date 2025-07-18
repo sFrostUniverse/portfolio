@@ -123,6 +123,22 @@ document.addEventListener('DOMContentLoaded', function () {
   initSnowflakes(100);
   drawSnowflakes();
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        const navbarHeight = document.querySelector('.frost-navbar').offsetHeight;
+        const offsetPosition = target.offsetTop - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+
   // Close mobile nav when a link is clicked
   const navLinks = document.querySelectorAll('.mobile-nav a');
   navLinks.forEach(link => {
@@ -146,19 +162,5 @@ document.querySelectorAll(".card").forEach(card => {
     });
   }
 });
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      const navbarHeight = document.querySelector('.frost-navbar').offsetHeight;
-      const offsetPosition = target.offsetTop - navbarHeight;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  });
-});
 

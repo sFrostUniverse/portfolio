@@ -247,9 +247,11 @@ section {
 
 /* Specific styling for the #about section */
 #about {
-  padding: 120px 20px 60px; /* more padding-top and bottom */
-  scroll-margin-top: 200px;
+  margin-top: 40px; /* ✅ add this */
+  padding: 100px 20px 60px;
+  scroll-margin-top: 140px;
 }
+
 
 
 
