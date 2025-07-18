@@ -23,30 +23,30 @@
 
 html {
     scroll-behavior: smooth;
-    height: 100%; /* Ensures html element takes full viewport height */
-    overflow-x: hidden; /* Prevents horizontal scroll on html too */
+    height: 100%; 
+    overflow-x: hidden; 
 }
 
-/* Base Body Styles - Consolidated all 'body' rules here */
+
+
 body {
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    /* --- MODIFIED CODE FOR OVERLAP FIX (previously 80px) --- */
-    padding-top: 100px; /* Increased to ensure enough space for the fixed navbar */
-    /* --- END OF MODIFIED CODE FOR OVERLAP FIX --- */
-    /* Adjust gradient opacity or remove it if you want the banner clearer */
+    
+    padding-top: 100px; 
+    scroll-behavior: smooth;
     background:
         linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(240, 255, 255, 0.1)),
         url('assets/banner.png') no-repeat center center fixed;
     background-size: cover;
-    background-blend-mode: overlay; /* Keep or remove based on desired effect */
-    color: var(--text-color); /* Use the defined --text-color variable */
+    background-blend-mode: overlay; 
+    color: var(--text-color); 
     line-height: 1.6;
-    overflow-x: hidden; /* To prevent horizontal scrollbar on body */
+    overflow-x: hidden; 
     position: relative;
-    /* min-height: 100vh; -- Removed to prevent excess space if content is short */
-    height: 100%; /* Ensures body takes full html height */
+  
+    height: 100%; 
 }
 
 /* Ensure all text elements inherit the text color or use it explicitly */
@@ -247,14 +247,10 @@ section {
 
 /* Specific styling for the #about section */
 #about {
-  margin-top: 40px; /* ✅ add this */
-  padding: 100px 20px 60px;
-  scroll-margin-top: 140px;
+  margin-top: -420px;        /* Pulls section up strongly */
+  padding: 10px 20px 60px;   /* Reduces top spacing further */
+  scroll-margin-top: 140px;  /* Keeps scroll behavior clean */
 }
-
-
-
-
 
 /* Paragraph spacing in #about (moved from inline) */
 #about p {

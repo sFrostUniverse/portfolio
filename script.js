@@ -26,22 +26,6 @@ function showTab(tabId) {
 
 
 
-// Set initial active tab on page load
-
-
-function scrollToSection(id) {
-  const element = document.getElementById(id);
-  if (element) {
-    // Calculate the offset considering the fixed navbar height
-    const navbarHeight = document.querySelector('.frost-navbar').offsetHeight;
-    const offsetPosition = element.offsetTop - navbarHeight;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth"
-    });
-  }
-}
 
 // Mobile navigation toggle
 function toggleMobileNav() {
@@ -122,26 +106,18 @@ document.addEventListener('DOMContentLoaded', function () {
   resizeCanvas();
   initSnowflakes(100);
   drawSnowflakes();
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  
+  const smoothAnchors = document.querySelectorAll('a[href^="#"]');
+  smoothAnchors.forEach(anchor => {
     anchor.addEventListener("click", function (e) {
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
         e.preventDefault();
 
-        const navbar = document.querySelector('.frost-navbar');
-        const scrollY = window.pageYOffset;
-        const targetY = target.getBoundingClientRect().top + scrollY - navbar.offsetHeight;
-
-        window.scrollTo({
-          top: targetY,
-          behavior: 'smooth'
-        });
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   });
-
-
 
   // Close mobile nav when a link is clicked
   const navLinks = document.querySelectorAll('.mobile-nav a');
