@@ -216,7 +216,7 @@ header img {
 
 /* General Section Styling */
 section {
-    scroll-margin-top: 80px; /* Offset for sticky nav when linking to sections */
+    scroll-margin-top: 100px; /* Offset for sticky nav when linking to sections */
     padding: 60px 20px;
     max-width: 1000px;
     margin-left: auto;
@@ -226,8 +226,9 @@ section {
 /* Specific styling for the #about section */
 #about {
     padding: 80px 20px 40px;
-    margin-top: 500px; /* This creates the large initial space you desire */
+    scroll-margin-top: 100px; /* ✅ Ensures section scrolls below navbar */
 }
+
 
 /* Paragraph spacing in #about (moved from inline) */
 #about p {
