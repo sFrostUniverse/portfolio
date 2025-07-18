@@ -123,21 +123,25 @@ document.addEventListener('DOMContentLoaded', function () {
   initSnowflakes(100);
   drawSnowflakes();
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
-      e.preventDefault();
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
-        const navbarHeight = document.querySelector('.frost-navbar').offsetHeight;
-        const offsetPosition = target.offsetTop - navbarHeight;
+        e.preventDefault();
+
+        const navbar = document.querySelector('.frost-navbar');
+        const scrollY = window.pageYOffset;
+        const targetY = target.getBoundingClientRect().top + scrollY - navbar.offsetHeight;
 
         window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
+          top: targetY,
+          behavior: 'smooth'
         });
       }
     });
   });
+
+
 
   // Close mobile nav when a link is clicked
   const navLinks = document.querySelectorAll('.mobile-nav a');
