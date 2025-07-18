@@ -45,6 +45,11 @@ body {
     height: 100%; /* Ensures body takes full html height */
 }
 
+/* Optional: Disable scroll when mobile nav is open */
+body.mobile-nav-open {
+    overflow: hidden;
+}
+
 /* Ensure all text elements inherit the text color or use it explicitly */
 body, h1, h2, h3, h4, h5, h6, p, li, span, strong {
     color: var(--text-color) !important; /* Use !important to override default browser styles */
@@ -344,6 +349,10 @@ h2 {
     .mobile-toggle {
         display: block;
     }
+    /* Specific styling for the logo on mobile */
+    .frost-navbar .logo {
+        font-size: 1.5em; /* Make the logo smaller on mobile */
+    }
 }
 
 /* General Button Styles (btn is more generic, frosty-btn is specific) */
@@ -584,6 +593,14 @@ footer {
     flex: 2 1 300px;
 }
 
+.card-image-right {
+    flex: 1 1 400px; /* Changed from 300px to 400px to make it less small */
+    position: relative;
+    padding-bottom: 56.25%; /* Changed from 75% for 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
 .card img, .card video {
     /* Keep existing */
     width: 100%;
@@ -614,11 +631,4 @@ html {
   #about {
     margin-top: 100px; /* Adjust this value (e.g., 100px, 150px, or 20vh) as needed for mobile */
   }
-}
-.card-image-right {
-    flex: 1 1 400px; /* Changed from 300px to 400px to make it less small */
-    position: relative;
-    padding-bottom: 56.25%; /* Changed from 75% for 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
 }
