@@ -146,3 +146,9 @@ document.querySelectorAll(".card").forEach(card => {
     });
   }
 });
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
