@@ -93,10 +93,39 @@ function drawSnowflakes() {
 }
 
 // Initialize and start snowfall
+// ❄️ Snowfall resize handler (keep this!)
 window.addEventListener('resize', () => {
   resizeCanvas();
   initSnowflakes(100); // Re-initialize snowflakes on resize
 });
+
+// 🌫️ Scroll handler (new one!)
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+
+  // Blur background after some scroll
+  if (scrollY > 50) {
+    document.body.classList.add("blurred");
+  } else {
+    document.body.classList.remove("blurred");
+  }
+
+  // Highlight active section in navbar
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".frost-navbar .nav-links a");
+
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 150 && rect.bottom >= 150) {
+      navLinks.forEach(link => link.classList.remove("active"));
+      const activeLink = document.querySelector(
+        `.frost-navbar .nav-links a[href="#${section.id}"]`
+      );
+      if (activeLink) activeLink.classList.add("active");
+    }
+  });
+});
+
 
 document.addEventListener('DOMContentLoaded', function () {
   // Set initial active tab

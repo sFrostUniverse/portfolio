@@ -53,11 +53,12 @@
 <section id="projects">
 <h2>Projects</h2>
 <div class="tab-buttons-container">
-<button class="tab-btn frosty-btn active" onclick="showTab('bots')">🤖 Bots</button>
-<button class="tab-btn frosty-btn" onclick="showTab('edits')">🎞️ Edits</button>
-<button class="tab-btn frosty-btn" onclick="showTab('films')">🎬 Films</button>
-<button class="tab-btn frosty-btn" onclick="showTab('apps')">Apps 📱</button>
+  <button class="tab-btn active" data-tab="bots" onclick="showTab('bots')">🤖 Bots</button>
+  <button class="tab-btn" data-tab="edits" onclick="showTab('edits')">🎞️ Edits</button>
+  <button class="tab-btn" data-tab="films" onclick="showTab('films')">🎬 Films</button>
+  <button class="tab-btn" data-tab="apps" onclick="showTab('apps')">📱 Apps</button>
 </div>
+
 
 
 <div id="bots" class="tab-content active">
@@ -161,12 +162,12 @@
         <div class="flex-wrap-card">
           <div class="card-content-left">
             <h3>FrostHub Mobile</h3>
-            <p>A lightweight student-focused companion app for FrostHub — access your timetable, notes, and announcements right from your phone!</p>
+              <p>FrostHub Mobile is your all-in-one student companion. Access timetables, notes, announcements, and even get your doubts solved — anytime, anywhere.</p>
             <a href="https://github.com/sFrostUniverse/FrostHub/raw/master/apk/app-release.apk" class="frosty-btn" download>📥 Install App</a>
 
           </div>
           <div class="card-image-right">
-            <img src="assets/frosthub-app-preview.png" alt="FrostHub App Preview" class="cropped-4by3" />
+            <img src="assets/logo.png" alt="FrostHub App Preview" class="cropped-4by3" />
           </div>
         </div>
       </div>
@@ -176,80 +177,101 @@
 
 </section>
 
-
 <section id="skills">
   <h2>Editing & Development Tools</h2>
-  <div class="card">
-    <div class="skills-grid">
-      <div>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="50">
-        <p>Python</p>
-      </div>
-      <div>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg" alt="After Effects" width="50">
-        <p>After Effects</p>
-      </div>
-      <div>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-original.svg" alt="Premiere Pro" width="50">
-        <p>Premiere Pro</p>
-      </div>
-      <div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg" alt="Discord Bots" width="50">
-        <p>Discord Bots</p>
-      </div>
-      <div>
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Twitch Tools" width="50">
-        <p>Twitch Tools</p>
-      </div>
+  <div class="skills-grid">
+    <div class="skill-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+      <p>Python</p>
+    </div>
+    <div class="skill-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+      <p>C++</p>
+    </div>
+    <div class="skill-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js">
+      <p>Node.js</p>
+    </div>
+    <div class="skill-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React.js">
+      <p>React.js</p>
+    </div>
+    <div class="skill-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter">
+      <p>Flutter</p>
+    </div>
+    <div class="skill-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg" alt="After Effects">
+      <p>After Effects</p>
+    </div>
+    <div class="skill-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-original.svg" alt="Premiere Pro">
+      <p>Premiere Pro</p>
     </div>
   </div>
 </section>
-
-
-
 
 <section id="services">
   <h2>Services</h2>
-  <div class="card">
-    <ul class="service-list">
-      <li>🤖 Discord Bot Development (Security, Utility, Twitch, Logging)</li>
-      <li>🎬 Video Editing – Loops, Montages, Reels, Short Films</li>
-      <li>🛠️ Automation – Alerts, Twitch overlays, Channel management</li>
-      <li>🎨 Custom UI Themes for bots/web</li>
-      <li>🤝 One-on-one support for creators or servers</li>
-    </ul>
+  <div class="services-grid">
+    <div class="service-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3094/3094850.png" alt="Web Development">
+      <h3>Web Development</h3>
+      <p>Modern, responsive websites built with React.js, Node.js, and more.</p>
+    </div>
+    <div class="service-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2906/2906274.png" alt="App Development">
+      <h3>App Development</h3>
+      <p>Cross-platform apps powered by Flutter for seamless performance.</p>
+    </div>
+    <div class="service-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/6062/6062646.png" alt="Video Editing">
+      <h3>Video Editing</h3>
+      <p>Professional edits using Premiere Pro & After Effects.</p>
+    </div>
+    <div class="service-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Automation & Bots">
+      <h3>Automation & Bots</h3>
+      <p>Custom Python and Node.js bots to automate workflows and enhance productivity.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Let’s Work Together</h2>
+  <p>Have a project in mind or just want to say hello? Drop me a message!</p>
+
+  <div class="contact-card">
+    <form action="https://formspree.io/f/movloqyo" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </div>
 </section>
 
 
+<section id="frost-footer">
+  <div class="frost-footer-card">
+    <h2>I'm Frost ❄</h2>
+    <p>Follow me and stay connected:</p>
+    <div class="social-links">
+      <a href="https://github.com/sFrostUniverse" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+      </a>
+      <a href="https://instagram.com/s.frostuniverse" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+      </a>
+      <a href="https://discord.gg/XcTFDd7ZTT" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord">
+      </a>
 
 
-<section id="contact">
-    <h2>Contact</h2>
-    <div class="card">
-      <p>Reach out for commissions, collabs, or support 💙</p>
-      <p>📧 <strong>Email:</strong> <a href="mailto:frostyyuniverse@gmail.com">frostyyuniverse@gmail.com</a></p>
-      <p>💬 <strong>Discord Server:</strong> <a href="https://discord.com/invite/XcTFDd7ZTT" target="_blank">Join My Server</a></p>
     </div>
-  </section>
+  </div>
+</section>
 
-    <section id="frost-footer">
-    <div class="frost-footer-card">
-      <h2>I'm Frost ❄</h2>
-      <p>Follow me and stay connected:</p>
-      <div class="social-links">
-        <a href="https://www.instagram.com/s.frostuniverse/?__pwa=1#" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-        </a>
-        <a href="https://github.com/sFrostUniverse" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
-        </a>
-        <a href="https://www.twitch.tv/sfrostuniverse" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733641.png" alt="Twitch">
-        </a>
-      </div>
-    </div>
-  </section>
 
   <footer>
     © 2025 Frost Universe. Open-source projects licensed under <a href="https://github.com/sFrostUniverse/Vikrant-bot/blob/main/LICENSE">MIT</a>.<br />
