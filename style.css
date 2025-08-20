@@ -27,33 +27,44 @@ html {
     overflow-x: hidden; 
 }
 
-/* Default desktop background */
 body {
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
     padding-top: 100px;
     scroll-behavior: smooth;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+/* Background goes to pseudo-element */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
     background:
         linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(240, 255, 255, 0.1)),
         url('assets/banner.png') no-repeat center center fixed;
     background-size: cover;
-    background-blend-mode: overlay; 
-    color: var(--text-color); 
-    line-height: 1.6;
-    overflow-x: hidden; 
-    position: relative;
-    height: 100%;
+    background-blend-mode: overlay;
+    z-index: -1; /* stays behind content */
+    transition: filter 0.5s ease-in-out;
 }
+
+/* Blur on scroll */
+body.blurred::before {
+    filter: blur(6px);
+}
+
 
 /* Mobile version – only swap image */
 @media (max-width: 768px) {
     body {
-        background:
+        background-image: 
             linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(240, 255, 255, 0.1)),
-            url('assets/banner-mobile.png') no-repeat center center fixed;
-        background-size: cover;
-        background-blend-mode: overlay;
+            url('assets/banner-mobile.png');
     }
 }
 
@@ -251,12 +262,13 @@ header img {
 
 /* General Section Styling */
 section {
-    scroll-margin-top: 100px; /* Offset for sticky nav when linking to sections */
-    padding: 60px 20px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+  scroll-margin-top: 160px; /* equal to header height */
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 
 /* Specific styling for the #about section */
@@ -304,6 +316,14 @@ h2 {
 
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6); /* subtle outline */
 }
+
+.hero-section {
+  background: url("assets/your-wallpaper.png") center/cover no-repeat;
+  height: 100vh;
+  position: relative;
+  transition: filter 0.6s ease, opacity 0.6s ease;
+}
+
 
 
 
@@ -386,44 +406,52 @@ h2 {
     z-index: 1001;
 }
 
-/* Mobile Nav Floating Menu */
+/* Mobile Nav Floating Dropdown */
 .mobile-nav {
-    position: fixed;
-    top: -100%; /* Off-screen by default */
-    left: 0;
-    width: 100%;
+    position: absolute;
+    top: 60px; /* right below navbar */
+    right: 20px;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 40px 0;
-    gap: 20px;
-    transition: top 0.4s ease;
+    gap: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
+    max-height: 0;      /* collapsed */
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
     z-index: 1000;
+    width: 200px;       /* fixed width dropdown */
 }
-/* Mobile nav links - match fancy glowing desktop style */
+
+/* Show dropdown */
+.mobile-nav.active {
+    max-height: 400px; /* enough for links */
+    opacity: 1;
+}
+
+/* Mobile nav links */
 .mobile-nav a {
     position: relative;
     color: #fff;
-    font-size: 1.2em;
+    font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
-    padding: 12px 0;
-    transition: all 0.3s ease;
+    padding: 10px 0;
+    text-align: center;
 
     text-shadow:
-      0 0 12px rgba(0,229,255,0.8),
-      0 0 24px rgba(0,229,255,0.6),
-      0 0 40px rgba(0,229,255,0.4);
-
-    -webkit-text-stroke: 0.5px rgba(0,0,0,0.5);
+      0 0 8px rgba(0,229,255,0.8),
+      0 0 16px rgba(0,229,255,0.6);
+    transition: all 0.3s ease;
 }
 
-/* Hover effect */
 .mobile-nav a:hover {
     color: var(--accent-color);
-    text-shadow: 0 0 6px rgba(0,229,255,0.9);
 }
 
 /* Fancy underline effect */
@@ -917,6 +945,7 @@ html {
     backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
+    scroll-margin-top: 160px;
 }
 
 /* Add frosty texture */
@@ -1040,6 +1069,33 @@ html {
 .tab-btn.active[data-tab="apps"] {
   background: rgba(114,137,218,0.12);
   box-shadow: 0 0 20px #7289da;
+}
+/* 🔥 Section scroll-in / scroll-out animation */
+section {
+  opacity: 0;
+  transform: translateY(60px) scale(0.95);
+  transform-origin: center center;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+section.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Leaving upward */
+section.out-up {
+  opacity: 0;
+  transform: translateY(-60px) scale(0.9);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Leaving downward */
+section.out-down {
+  opacity: 0;
+  transform: translateY(60px) scale(0.9);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 
