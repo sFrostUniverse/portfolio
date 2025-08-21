@@ -262,7 +262,7 @@ header img {
 
 /* General Section Styling */
 section {
-  scroll-margin-top: 160px; /* equal to header height */
+  scroll-margin-top: 180px; 
   padding: 60px 20px;
   max-width: 1000px;
   margin-left: auto;
